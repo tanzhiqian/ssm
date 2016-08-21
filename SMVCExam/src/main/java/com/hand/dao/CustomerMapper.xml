@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hand.dao.ICustomerMapper">
+	
+	<sql id="Base_Column_List" >
+    first_name, last_name, email, customer_id , last_update
+  </sql>
+	
+	<select id="selectCustomer" parameterType="com.hand.pojo.Customer" resultType="com.hand.pojo.Customer">
+	select * from customer where first_name=#{first_name}
+	</select>
+	
+	<select id="selectAllCustomer" resultType="com.hand.pojo.Customer">
+	select * from customer
+	</select>
+	
+  <select id="selectByPage" parameterType="com.hand.pojo.Paramer" resultType="com.hand.pojo.Customer">
+  	 select * from customer limit #{begin},#{size}
+  </select>
+  
+  <select id="getTotalPage" resultType="Integer">
+  	select count(*)
+  	from customer
+  	
+  </select>
+	
+</mapper>
